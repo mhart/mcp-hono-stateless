@@ -55,3 +55,45 @@ node node_modules/@modelcontextprotocol/sdk/dist/esm/examples/client/simpleStrea
 This will try to connect to the MCP server running on port 3000. You can use `connect <url>/mcp` to connect to a different host or port.
 
 Then you can run commands like `list-prompts` or `list-tools` to verify your MCP server is working.
+
+Here's an example session against a Hono MCP server deployed on Cloudflare Workers:
+
+```console
+> connect https://mcp-hono-stateless.michael.workers.dev/mcp
+Connecting to https://mcp-hono-stateless.michael.workers.dev/mcp...
+Transport created with session ID: undefined
+Connected to MCP server
+
+> list-tools
+Available tools:
+  - start-notification-stream: Starts sending periodic notifications for testing resumability
+
+> list-prompts
+Available prompts:
+  - greeting-template: A simple greeting prompt template
+
+> call-tool start-notification-stream
+Calling tool 'start-notification-stream' with args: {}
+
+Notification #1: info - Periodic notification #1 at 2025-04-22T16:20:50.178Z
+> 
+Notification #2: info - Periodic notification #2 at 2025-04-22T16:20:50.278Z
+> 
+Notification #3: info - Periodic notification #3 at 2025-04-22T16:20:50.378Z
+> 
+Notification #4: info - Periodic notification #4 at 2025-04-22T16:20:50.478Z
+> 
+Notification #5: info - Periodic notification #5 at 2025-04-22T16:20:50.578Z
+> 
+Notification #6: info - Periodic notification #6 at 2025-04-22T16:20:50.678Z
+> 
+Notification #7: info - Periodic notification #7 at 2025-04-22T16:20:50.778Z
+> 
+Notification #8: info - Periodic notification #8 at 2025-04-22T16:20:50.878Z
+> 
+Notification #9: info - Periodic notification #9 at 2025-04-22T16:20:50.978Z
+> 
+Notification #10: info - Periodic notification #10 at 2025-04-22T16:20:51.078Z
+> Tool result:
+  Started sending periodic notifications every 100ms
+```
