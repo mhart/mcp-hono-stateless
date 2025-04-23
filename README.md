@@ -18,7 +18,6 @@ The only real changes to the Express example are:
 
 - app.post('/mcp', async (req: Request, res: Response) => {
 + app.post('/mcp', async (c) => {
-+   const body = await c.req.json();
 +   const { req, res } = toReqRes(c.req.raw);
 
     const server = getServer();
@@ -28,7 +27,7 @@ The only real changes to the Express example are:
       });
       await server.connect(transport);
 -     await transport.handleRequest(req, res, req.body);
-+     await transport.handleRequest(req, res, body);
++     await transport.handleRequest(req, res, await c.req.json());
       res.on('close', () => {
         console.log('Request closed');
         transport.close();

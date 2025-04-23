@@ -113,7 +113,6 @@ const getServer = () => {
 const app = new Hono();
 
 app.post("/mcp", async (c) => {
-  const body = await c.req.json();
   const { req, res } = toReqRes(c.req.raw);
 
   const server = getServer();
@@ -126,7 +125,7 @@ app.post("/mcp", async (c) => {
 
     await server.connect(transport);
 
-    await transport.handleRequest(req, res, body);
+    await transport.handleRequest(req, res, await c.req.json());
 
     res.on("close", () => {
       console.log("Request closed");
