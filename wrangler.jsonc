@@ -7,6 +7,11 @@
   "observability": {
     "enabled": true
   },
+  // Not strictly necessary, but these are unused and reduce the size of the deployed bundle by 60%
+  "alias": {
+    "raw-body": "./src/empty.ts",
+    "content-type": "./src/empty.ts"
+  },
   "dev": {
     "port": 3000
   }

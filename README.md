@@ -1,7 +1,7 @@
 # Stateless Hono MCP Server
 
 An example [Hono](https://hono.dev/) MCP server using Streamable HTTP, based off [the official Express example](https://github.com/modelcontextprotocol/typescript-sdk/blob/4d6197ac07776ab95a2d63a781514a75740cf746/src/examples/server/simpleStatelessStreamableHttp.ts),
-deployable to [Cloudflare Workers](https://developers.cloudflare.com/workers/) (and anywhere else Hono runs).
+using [fetch-to-node](https://github.com/mhart/fetch-to-node) to convert, deployable to [Cloudflare Workers](https://developers.cloudflare.com/workers/) (and anywhere else Hono runs).
 
 The only real changes to the Express example are:
 
