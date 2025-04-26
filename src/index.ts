@@ -107,6 +107,10 @@ const getServer = () => {
       };
     }
   );
+
+  // Added for extra debuggability
+  server.server.onerror = console.error.bind(console);
+
   return server;
 };
 
@@ -122,6 +126,9 @@ app.post("/mcp", async (c) => {
       new StreamableHTTPServerTransport({
         sessionIdGenerator: undefined,
       });
+
+    // Added for extra debuggability
+    transport.onerror = console.error.bind(console);
 
     await server.connect(transport);
 
